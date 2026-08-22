@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nihal | Portfolio</title>
+  <style>/* ==========================================
+   NIHAL — PORTFOLIO
+   Palette: cream · sand · terracotta · soil
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg: #f4ede3;
+  --bg-alt: #ebe0d0;
+  --card: #fff8f0;
+  --white: #fffdf9;
+  --accent: #b86b3d;          /* terracotta clay */
+  --accent-dark: #8f4e28;     /* burnt soil */
+  --accent-soft: #e8c4a8;     /* sun-baked sand */
+  --soil: #5c3a22;
+  --text: #3a2718;
+  --text-muted: #7d6650;
+  --border: #d9c8b4;
+  --shadow: 0 10px 28px rgba(92, 58, 34, 0.10);
+  --radius: 14px;
+  --nav-height: 72px;
+  --transition: all 0.3s ease;
+}
+
+/* ---------- Reset ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 96px 7%;
+  scroll-margin-top: var(--nav-height);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--white);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 50px;
+  border: 2px solid var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn-primary {
+  background: var(--accent);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(184, 107, 61, 0.35);
+}
+.btn-outline {
+  color: var(--accent);
+  background: transparent;
+}
+.btn-outline:hover {
+  background: var(--accent);
+  color: var(--white);
+  transform: translateY(-3px);
+}
+.btn-lg { padding: 14px 40px; font-size: 1rem; }
+
+/* ---------- Navbar ---------- */
+.navbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 7%;
+  background: rgba(244, 237, 227, 0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+}
+
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--soil);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+.logo span { color: var(--accent); }
+
+.nav-menu { display: flex; list-style: none; gap: 4px; }
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+.nav-link:hover,
+.nav-link.active {
+  color: var(--accent-dark);
+  background: rgba(184, 107, 61, 0.10);
+}
+
+.menu-toggle { display: none; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span {
+  width: 26px; height: 3px;
+  background: var(--soil);
+  border-radius: 2px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  padding-top: calc(var(--nav-height) + 24px);
+  background:
+    radial-gradient(circle at 12% 20%, rgba(184, 107, 61, 0.16), transparent 42%),
+    radial-gradient(circle at 88% 78%, rgba(232, 196, 168, 0.45), transparent 46%),
+    var(--bg);
+}
+
+.hero-content { max-width: 620px; }
+
+.hero-greeting {
+  color: var(--accent);
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.2rem;
+  font-weight: 700;
+  color: var(--soil);
+  line-height: 1.05;
+  margin: 6px 0 8px;
+}
+
+.hero-role {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+.highlight { color: var(--accent); }
+
+.hero-text {
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  max-width: 540px;
+}
+
+.hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.hero-img {
+  width: 310px; height: 310px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-soft);
+  border-radius: 50%;
+  border: 6px solid var(--white);
+  box-shadow:
+    0 0 0 3px var(--accent-soft),
+    0 18px 40px rgba(92, 58, 34, 0.18);
+  overflow: hidden;
+}
+.hero-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Section titles ---------- */
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 600;
+  color: var(--soil);
+  margin-bottom: 52px;
+  padding-bottom: 16px;
+  position: relative;
+}
+.section-title span { color: var(--accent); }
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 64px; height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* ---------- About ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+.about-text p {
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.about-text b { color: var(--accent-dark); }
+
+.about-info {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+.about-info li {
+  background: var(--card);
+  padding: 13px 16px;
+  border-radius: 10px;
+  border-left: 3px solid var(--accent);
+  font-size: 0.95rem;
+  box-shadow: var(--shadow);
+}
+.about-info b { color: var(--soil); }
+
+.goal-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.goal-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-dark), var(--accent-soft));
+}
+.goal-card h3 {
+  color: var(--accent-dark);
+  margin-bottom: 12px;
+  font-size: 1.15rem;
+}
+.goal-card p { color: var(--text-muted); }
+
+/* ---------- Skills ---------- */
+.skills { background: var(--bg-alt); }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+}
+
+.skill-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px 22px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+.skill-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-soft);
+  box-shadow: 0 16px 32px rgba(92, 58, 34, 0.14);
+}
+
+.skill-icon { font-size: 1.9rem; margin-bottom: 8px; }
+.skill-card h3 {
+  color: var(--soil);
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+.skill-level {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 7px;
+}
+.progress-bar {
+  height: 8px;
+  background: #eadccb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.progress-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-dark), var(--accent), var(--accent-soft));
+  border-radius: 10px;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 36px;
+}
+.tech-tags span {
+  background: rgba(184, 107, 61, 0.10);
+  color: var(--accent-dark);
+  border: 1px solid var(--accent-soft);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* ---------- Projects ---------- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-soft);
+  box-shadow: 0 16px 32px rgba(92, 58, 34, 0.16);
+}
+
+.project-img {
+  height: 168px;
+  background:
+    linear-gradient(135deg, #c17a4a 0%, #8f4e28 55%, #5c3a22 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.project-body {
+  padding: 22px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.project-body h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem;
+  color: var(--soil);
+  margin-bottom: 8px;
+}
+.project-body p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  flex: 1;
+}
+.project-tech { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0; }
+.project-tech span {
+  background: rgba(184, 107, 61, 0.12);
+  color: var(--accent-dark);
+  padding: 3px 12px;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+.project-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.project-link:hover { color: var(--accent-dark); }
+
+/* ---------- Resume ---------- */
+.resume { background: var(--bg-alt); text-align: center; }
+
+.resume-box {
+  background: var(--card);
+  border: 1.5px dashed var(--accent-soft);
+  border-radius: var(--radius);
+  padding: 56px 28px;
+  max-width: 640px;
+  margin: 0 auto;
+  box-shadow: var(--shadow);
+}
+.resume-box p {
+  color: var(--text-muted);
+  margin-bottom: 26px;
+  font-size: 1.05rem;
+}
+
+/* ---------- Contact ---------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 36px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+.contact-item:hover { border-color: var(--accent-soft); }
+
+.contact-icon {
+  width: 46px; height: 46px;
+  flex-shrink: 0;
+  background: rgba(184, 107, 61, 0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+}
+.contact-item h4 { color: var(--soil); font-size: 0.95rem; }
+.contact-item p { color: var(--text-muted); font-size: 0.95rem; }
+
+.social-links { margin-top: 18px; }
+.social-links h4 {
+  color: var(--soil);
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+.social-links a {
+  display: inline-flex;
+  width: 42px; height: 42px;
+  align-items: center;
+  justify-content: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--soil);
+  text-decoration: none;
+  margin-right: 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  transition: var(--transition);
+}
+.social-links a:hover {
+  background: var(--accent);
+  color: var(--white);
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.contact-form {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+}
+.form-group { margin-bottom: 16px; }
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 13px 16px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  resize: vertical;
+  transition: var(--transition);
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(184, 107, 61, 0.18);
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder { color: #b09a84; }
+
+.contact-form button {
+  width: 100%;
+  border: none;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  text-align: center;
+  padding: 26px;
+  background: var(--soil);
+  color: #e8d5c0;
+  font-size: 0.9rem;
+}
+footer b { color: var(--accent-soft); }
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding-top: calc(var(--nav-height) + 32px);
+    gap: 28px;
+  }
+  .hero-text { margin-left: auto; margin-right: auto; }
+  .hero-buttons { justify-content: center; }
+  .hero-img { width: 230px; height: 230px; }
+  .about-grid,
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+
+  .nav-menu {
+    position: fixed;
+    top: var(--nav-height);
+    right: -100%;
+    width: 72%;
+    max-width: 300px;
+    height: calc(100vh - var(--nav-height));
+    background: var(--card);
+    flex-direction: column;
+    padding: 28px 24px;
+    gap: 8px;
+    box-shadow: -8px 0 24px rgba(92, 58, 34, 0.14);
+    transition: right 0.35s ease;
+  }
+  .menu-toggle:checked ~ .nav-menu { right: 0; }
+}
+
+@media (max-width: 600px) {
+  section { padding: 72px 6%; }
+  .hero-name { font-size: 2.8rem; }
+  .hero-role { font-size: 1.05rem; }
+  .section-title { font-size: 2rem; }
+  .about-info { grid-template-columns: 1fr; }
+}</style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <a href="#home" class="logo">Nihal<span>.</span></a>
+
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+    <label for="menu-toggle" class="hamburger">
+      <span></span><span></span><span></span>
+    </label>
+
+    <ul class="nav-menu">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#resume" class="nav-link">Resume</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== HOME / HERO ===== -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <p class="hero-greeting">Hello, I'm</p>
+      <h1 class="hero-name">Nihal</h1>
+      <h2 class="hero-role">B.Tech CSE Student | Aspiring <span class="highlight">Cyber Security</span> Analyst</h2>
+      <p class="hero-text">
+        Pursuing B.Tech CSE at ITS Engineering College, Greater Noida.
+        Currently learning Frontend Development — because to protect a system,
+        you must first understand how it's built.
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
+    </div>
+
+    <div class="hero-img">
+      <img src="profile.png" alt="Nihal" /><!-- optional: add your photo -->
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="about">
+    <h2 class="section-title">About <span>Me</span></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm an 18-year-old student from Greater Noida, Uttar Pradesh, pursuing
+          B.Tech in Computer Science & Engineering at ITS Engineering College.
+        </p>
+        <p>
+          My core interest lies in <b>Cyber Security (Offensive Security)</b>.
+          I'm currently building a foundation in Frontend Development and
+          networking to understand the systems I'll one day protect — and test.
+        </p>
+        <ul class="about-info">
+          <li><b>Name:</b> Nihal</li>
+          <li><b>Age:</b> 18</li>
+          <li><b>Education:</b> B.Tech CSE</li>
+          <li><b>Location:</b> Greater Noida, UP</li>
+        </ul>
+      </div>
+      <div class="goal-card">
+        <h3>🎯 Career Objective</h3>
+        <p>
+          To become a skilled Penetration Tester / Security Analyst, combining
+          development knowledge with offensive security expertise.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="skills">
+    <h2 class="section-title">My <span>Skills</span></h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">📄</div><h3>HTML</h3>
+        <div class="skill-level"><span>Proficiency</span><span>85%</span></div>
+        <div class="progress-bar"><span style="width:85%"></span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🎨</div><h3>CSS</h3>
+        <div class="skill-level"><span>Proficiency</span><span>75%</span></div>
+        <div class="progress-bar"><span style="width:75%"></span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><img src="image.png" alt="Blender" height="30px"></div><h3>Blender</h3>
+        <div class="skill-level"><span>Basics</span><span>75%</span></div>
+        <div class="progress-bar"><span style="width:75%"></span></div>
+      </div>
+       <div class="skill-card">
+        <div class="skill-icon">🐍</div><h3>Python</h3>
+        <div class="skill-level"><span>Learning</span><span>50%</span></div>
+        <div class="progress-bar"><span style="width:50%"></span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚙️</div><h3>JavaScript</h3>
+        <div class="skill-level"><span>Learning</span><span>40%</span></div>
+        <div class="progress-bar"><span style="width:40%"></span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚛️</div><h3>React</h3>
+        <div class="skill-level"><span>Learning</span><span>20%</span></div>
+        <div class="progress-bar"><span style="width:20%"></span></div>
+      </div>
+     
+      <div class="skill-card">
+        <div class="skill-icon">🅱️</div><h3>Bootstrap</h3>
+        <div class="skill-level"><span>Basics</span><span>35%</span></div>
+        <div class="progress-bar"><span style="width:35%"></span></div>
+      </div>
+      
+      <div class="skill-card">
+        <div class="skill-icon">🛜</div><h3>Networking</h3>
+        <div class="skill-level"><span>Basics</span><span>35%</span></div>
+        <div class="progress-bar"><span style="width:35%"></span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🌿</div><h3>Git / GitHub</h3>
+        <div class="skill-level"><span>Proficiency</span><span>50%</span></div>
+        <div class="progress-bar"><span style="width:50%"></span></div>
+      </div>
+    </div>
+    <div class="tech-tags">
+      <span>C</span><span>Python</span><span>Networking</span>
+      <span>Cyber Security Basics</span><span>Linux</span>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="projects">
+    <h2 class="section-title">My <span>Projects</span></h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-img">💻</div>
+        <div class="project-body">
+          <h3>Personal Portfolio Website</h3>
+          <p>A fully responsive portfolio built from scratch with clean UI, smooth navigation and mobile-first design.</p>
+          <div class="project-tech"><span>HTML</span><span>CSS</span></div>
+          <a href="#" class="project-link">🔗 View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img" >🖨️</div>
+        <div class="project-body">
+          <h3>Print Bridge</h3>
+          <p>A SaaS platform that connects users with local print shops to upload documents, place print orders, and manage printing digitally with real-time order tracking.</p>
+          <div class="project-tech"><span>Tailwind.css</span><span>Socket.io</span>
+        <span>MongoDB Atlas</span></div>
+          <a href="#" class="project-link">🔗 View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img">🔐</div>
+        <div class="project-body">
+          <h3>AI-Assisted Parking system</h3>
+          <p>An AI-assisted smart parking system that detects available parking spaces, automates vehicle identification, and helps manage parking efficiently through real-time monitoring and intelligent automation.</p>
+          <div class="project-tech"><span>HTML</span><span>Socket.io</span><span>React.js</span><span>Backend</span></div>
+          <a href="#" class="project-link">🔗 View on GitHub →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== RESUME ===== -->
+  <section id="resume" class="resume">
+    <h2 class="section-title">My <span>Resume</span></h2>
+    <div class="resume-box">
+      <p>Want to know more about my education and work? Grab a copy of my resume below.</p>
+      <a href="Resume.pdf" download class="btn btn-primary btn-lg">⬇ Download Resume</a>
+
+      <a href="Resume.jpeg" preview class="btn btn-primary btn-lg" target="_blank">👀 Preview</a>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="contact">
+    <h2 class="section-title">Contact <span>Me</span></h2>
+    <div class="contact-grid">
+
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div><h4>Email</h4><p>newuser987601@gmail.com</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div><h4>Phone</h4><p>+91 9654369144</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div><h4>Location</h4><p>Greater Noida, Uttar Pradesh</p></div>
+        </div>
+        <div class="social-links">
+          <h4>Find me on</h4>
+          <a href="https://github.com/nihal01052008" title="GitHub" target="_blank">GH</a>
+          <a href="#" title="LinkedIn">in</a>
+          <a href="https://www.instagram.com/__nihal99102/" title="Instagram" target="_blank">IG</a>
+        </div>
+      </div>
+
+      <form class="contact-form">
+        <div class="form-group">
+          <input type="text" placeholder="Your Name" required />
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Your Email" required />
+        </div>
+        <div class="form-group">
+          <textarea rows="5" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 <b>Nihal</b> | Designed & Built with ❤️</p>
+  </footer>
+
+</body>
+</html>
